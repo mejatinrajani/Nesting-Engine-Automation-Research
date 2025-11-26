@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "feature1": 0.234,
+    "feature2": 1.567,
+    "feature3": -0.892,
+    "feature4": 2.341,
+    "class": "A",
+    "confidence": 0.95
+  },
+  {
+    "id": 2,
+    "feature1": 1.123,
+    "feature2": -0.456,
+    "feature3": 0.789,
+    "feature4": -1.234,
+    "class": "B",
+    "confidence": 0.88
+  },
+  {
+    "id": 3,
+    "feature1": -0.567,
+    "feature2": 2.345,
+    "feature3": 1.234,
+    "feature4": 0.567,
+    "class": "A",
+    "confidence": 0.92
+  },
+  {
+    "id": 4,
+    "feature1": 2.456,
+    "feature2": -1.789,
+    "feature3": -0.234,
+    "feature4": 1.890,
+    "class": "C",
+    "confidence": 0.87
+  },
+  {
+    "id": 5,
+    "feature1": -1.234,
+    "feature2": 0.678,
+    "feature3": 2.456,
+    "feature4": -0.789,
+    "class": "B",
+    "confidence": 0.91
+  },
+  {
+    "id": 6,
+    "feature1": 0.890,
+    "feature2": -2.123,
+    "feature3": 0.345,
+    "feature4": 1.567,
+    "class": "A",
+    "confidence": 0.94
+  },
+  {
+    "id": 7,
+    "feature1": 1.678,
+    "feature2": 0.234,
+    "feature3": -1.567,
+    "feature4": 2.123,
+    "class": "C",
+    "confidence": 0.89
+  },
+  {
+    "id": 8,
+    "feature1": -0.345,
+    "feature2": 1.890,
+    "feature3": 0.678,
+    "feature4": -1.456,
+    "class": "B",
+    "confidence": 0.93
+  },
+  {
+    "id": 9,
+    "feature1": 2.123,
+    "feature2": -0.789,
+    "feature3": -2.345,
+    "feature4": 0.234,
+    "class": "A",
+    "confidence": 0.96
+  },
+  {
+    "id": 10,
+    "feature1": -1.890,
+    "feature2": 2.567,
+    "feature3": 1.123,
+    "feature4": -0.345,
+    "class": "C",
+    "confidence": 0.85
+  }
+]

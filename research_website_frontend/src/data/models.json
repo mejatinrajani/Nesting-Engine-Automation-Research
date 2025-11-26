@@ -1,0 +1,41 @@
+[
+  {
+    "id": "model-1",
+    "name": "XGBoost-Strategy-1",
+    "strategy": "Training from Scratch, the main model",
+    "accuracy": 37.0,
+    "precision": 0.33,
+    "recall": 0.38,
+    "f1": 0.30,
+    "auc": 0.0,
+    "size": "98 MB",
+    "trainTime": "4.2 hours",
+    "epochs": 100
+  },
+  {
+    "id": "model-2",
+    "name": "XGBoost-Strategy-2",
+    "strategy": "Training a Strategist Model for the main model",
+    "accuracy": 55.0,
+    "precision": 0.52,
+    "recall": 0.55,
+    "f1": 0.52,
+    "auc": 0.0,
+    "size": "98 MB",
+    "trainTime": "4.2 hours",
+    "epochs": 100
+  },
+  {
+    "id": "model-3",
+    "name": "XGBoost-Strategy-3",
+    "strategy": "Final fine-tuning + Hyperparameter tuning",
+    "accuracy": 67.0,
+    "precision": 0.64,
+    "recall": 0.70,
+    "f1": 0.65,
+    "auc": 0.0,
+    "size": "98 MB",
+    "trainTime": "4.2 hours",
+    "epochs": 100
+  }
+]
