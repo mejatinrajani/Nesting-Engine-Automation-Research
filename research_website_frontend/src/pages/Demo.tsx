@@ -6,6 +6,7 @@ import { GlassCard } from "@/components/GlassCard";
 import { GradientButton } from "@/components/GradientButton";
 import { MetricBadge } from "@/components/MetricBadge";
 import { Progress } from "@/components/ui/progress";
+import { buildApiUrl } from "@/lib/api";
 import { Sparkles, Brain, Zap, Package, Timer, Shield } from "lucide-react";
 
 // Only the best model (Strategy 3)
@@ -40,8 +41,7 @@ const handlePredict = async () => {
     setLoading(true);
     
     try {
-      // Point to your local Django server
-      const response = await fetch('http://127.0.0.1:8000/api/predict/', {
+      const response = await fetch(buildApiUrl("/api/predict/"), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -2,7 +2,12 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .engine import predict
 
-@api_view(['POST'])
+@api_view(["GET"])
+def health_check(_request):
+    return Response({"status": "ok"})
+
+
+@api_view(["POST"])
 def predict_algorithm(request):
     data = request.data
     
