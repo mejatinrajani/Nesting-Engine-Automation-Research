@@ -426,6 +426,7 @@ See the [LICENSE](./LICENSE) file in this repository for the full text of the li
 **Jatin Rajani**
 Machine Learning Researcher -- Additive Manufacturing AI
 
+- **Portfolio:** https://jatinrajani.me/
 - **Email:** mejatinrajani.tech@gmail.com
 - **GitHub:** https://github.com/mejatinrajani
 - **LinkedIn:** https://linkedin.com/in/mejatinrajani

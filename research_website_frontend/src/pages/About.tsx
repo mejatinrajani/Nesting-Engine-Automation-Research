@@ -59,9 +59,30 @@ const About = () => {
                     I am a researcher focused on applying AI to solve real industrial problems — specifically, automatically choosing the best 3D nesting algorithm for any given job.
                     <br /><br />
                     This project represents over 18 months of work: generating 25K+ synthetic scenarios, training multiple strategies, and optimizing XGBoost models to prove that smart, interpretable AI can outperform human heuristics in additive manufacturing.
+                    <br /><br />
+                    Explore my complete research portfolio and other projects at{" "}
+                    <a
+                      href="https://jatinrajani.me/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-green-700 hover:text-green-900 font-semibold underline underline-offset-4 decoration-2 transition-colors"
+                    >
+                      <Globe className="w-4 h-4 animate-pulse" />
+                      jatinrajani.me
+                    </a>
                   </p>
 
                   <div className="flex justify-center gap-4">
+                    <a
+                      href="https://jatinrajani.me/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-3 border-2 border-green-600 text-green-700 bg-green-50 hover:bg-green-600 hover:text-white transition-colors hover-round-btn flex items-center justify-center gap-2"
+                      title="Portfolio Website"
+                    >
+                      <Globe className="w-5 h-5" />
+                      <span className="text-xs font-semibold px-1">Portfolio</span>
+                    </a>
                     <a
                       href="mailto:mejatinrajani.tech@gmail.com"
                       onClick={(e) => { e.preventDefault(); openEmail(); }}
