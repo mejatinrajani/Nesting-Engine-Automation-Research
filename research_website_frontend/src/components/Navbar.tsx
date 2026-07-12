@@ -1,5 +1,4 @@
 import { Link, useLocation } from "react-router-dom";
-import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
@@ -20,24 +19,25 @@ export const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className="absolute top-0 left-0 right-0 z-50"
-    >
+    <nav className="sticky top-0 left-0 right-0 z-50 bg-white border-b border-green-200">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-center h-16 relative">
-          {/* Desktop Navigation - Centered */}
+        <div className="flex items-center justify-between h-14">
+          {/* Site title / logo */}
+          <Link to="/" className="text-green-800 font-semibold text-sm tracking-wide">
+            3D Nesting Research
+          </Link>
+
+          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-1">
             {navItems.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
                 className={cn(
-                  "px-4 py-2 rounded-lg font-medium transition-all duration-200",
+                  "px-4 py-2 text-sm font-medium transition-colors duration-200 border-b-2",
                   location.pathname === item.path
-                    ? "bg-primary text-white shadow-green"
-                    : "text-foreground hover:bg-green-100 hover:text-primary"
+                    ? "border-green-600 text-green-700"
+                    : "border-transparent text-gray-600 hover:text-green-700 hover:border-green-300"
                 )}
               >
                 {item.name}
@@ -45,41 +45,36 @@ export const Navbar = () => {
             ))}
           </div>
 
-          {/* Mobile Menu Button - Positioned on the right */}
+          {/* Mobile Menu Button */}
           <button
-            className="absolute right-0 md:hidden p-2 rounded-lg hover:bg-green-100"
+            className="md:hidden p-2 text-gray-600 hover:text-green-700"
             onClick={() => setMobileOpen(!mobileOpen)}
           >
-            {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
 
         {/* Mobile Navigation */}
         {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden pb-4 space-y-2"
-          >
+          <div className="md:hidden border-t border-green-100 py-2">
             {navItems.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
                 onClick={() => setMobileOpen(false)}
                 className={cn(
-                  "block px-4 py-2 rounded-lg font-medium transition-all",
+                  "block px-4 py-2 text-sm font-medium transition-colors duration-200",
                   location.pathname === item.path
-                    ? "bg-primary text-white"
-                    : "text-foreground hover:bg-green-100"
+                    ? "text-green-700 bg-green-50"
+                    : "text-gray-600 hover:text-green-700 hover:bg-green-50"
                 )}
               >
                 {item.name}
               </Link>
             ))}
-          </motion.div>
+          </div>
         )}
       </div>
-    </motion.nav>
+    </nav>
   );
 };

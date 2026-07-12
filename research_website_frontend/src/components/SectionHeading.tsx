@@ -10,16 +10,17 @@ interface SectionHeadingProps {
 export const SectionHeading = ({ children, className, subtitle }: SectionHeadingProps) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="text-center mb-12"
+      className="text-center mb-10"
     >
-      <h2 className={cn("text-4xl md:text-5xl font-bold text-gradient mb-4", className)}>
+      <h2 className={cn("text-3xl md:text-4xl font-bold text-green-800 mb-3 tracking-tight", className)}>
         {children}
       </h2>
+      <div className="w-16 h-0.5 bg-green-500 mx-auto mb-4" />
       {subtitle && (
-        <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+        <p className="text-base text-gray-500 max-w-2xl mx-auto">
           {subtitle}
         </p>
       )}

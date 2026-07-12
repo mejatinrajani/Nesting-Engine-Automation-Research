@@ -1,5 +1,4 @@
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 interface OutlineButtonProps {
@@ -11,44 +10,28 @@ interface OutlineButtonProps {
 
 export const OutlineButton = ({ children, className, href, onClick }: OutlineButtonProps) => {
   const baseClasses = cn(
-    "inline-block px-8 py-4 rounded-xl font-semibold border-2 border-primary text-primary bg-white hover:bg-primary hover:text-white transition-all duration-300 shadow-soft hover:shadow-green text-center",
+    "inline-block px-8 py-3 font-medium border border-green-600 text-green-700 bg-white hover:bg-green-600 hover:text-white transition-colors duration-200 text-center text-sm tracking-wide hover-round-btn",
     className
   );
 
   if (href) {
     if (href.startsWith("http")) {
       return (
-        <motion.a
-          href={href}
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          className={baseClasses}
-        >
+        <a href={href} className={baseClasses}>
           {children}
-        </motion.a>
+        </a>
       );
     }
     return (
-      <Link to={href}>
-        <motion.div
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          className={baseClasses}
-        >
-          {children}
-        </motion.div>
+      <Link to={href} className={baseClasses}>
+        {children}
       </Link>
     );
   }
 
   return (
-    <motion.button
-      onClick={onClick}
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
-      className={baseClasses}
-    >
+    <button onClick={onClick} className={baseClasses}>
       {children}
-    </motion.button>
+    </button>
   );
 };

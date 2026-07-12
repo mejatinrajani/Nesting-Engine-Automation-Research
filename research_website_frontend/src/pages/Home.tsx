@@ -30,125 +30,105 @@ const Home = () => {
 
   return (
     <PageLayout>
-      {/* --- AESTHETIC BACKGROUND LAYER --- */}
-      <div className="fixed inset-0 w-full h-full bg-white -z-10 overflow-hidden">
-        {/* Top Left Green Spot */}
-        <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-green-200/80 blur-[140px]" />
-        
-        {/* Center Right Mint Spot */}
-        <div className="absolute top-[40%] right-[-5%] w-[400px] h-[400px] rounded-full bg-emerald-200/50 blur-[120px]" />
-        
-        {/* Bottom Left Teal Spot */}
-        <div className="absolute bottom-[-10%] left-[20%] w-[600px] h-[600px] rounded-full bg-green-200/50 blur-[140px]" />
-      </div>
+      {/* Hero Section */}
+      <section className="py-16 md:py-24 border-b border-green-100">
+        <div className="container mx-auto px-4 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <p className="text-xs font-semibold uppercase tracking-widest text-green-600 mb-4">Research Publication</p>
+            <h1 className="text-4xl md:text-6xl font-bold leading-tight text-green-900 mb-6">
+              Automated Algorithm Selection
+              <br />
+              for 3D Nesting in Additive Manufacturing
+            </h1>
+            <p className="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto mb-10">
+              Open-source ML research with comprehensive models, datasets, and evaluation metrics for scientific advancement.
+            </p>
 
-      {/* --- MAIN CONTENT --- */}
-      <div className="relative z-10">
-        {/* Hero Section */}
-        <section className="py-20 md:py-32">
-          <div className="container mx-auto px-4 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <h1 className="text-5xl md:text-7xl font-bold leading-loose text-gradient mb-6">
-                Automated Algorithm Selection
-                <br />
-                for 3D Nesting in Additive Manufacturing
-              </h1>
-              <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-10">
-                Open-source ML research with comprehensive models, datasets, and evaluation metrics for scientific advancement
-              </p>
-              
-              <div className="flex flex-wrap gap-4 justify-center mb-12">
-                <GradientButton href="/demo">Try Demo</GradientButton>
-                <OutlineButton href="/models">View Models</OutlineButton>
-              </div>
+            <div className="flex flex-wrap gap-4 justify-center mb-12">
+              <GradientButton href="/demo">Try Demo</GradientButton>
+              <OutlineButton href="/models">View Models</OutlineButton>
+            </div>
 
-              <div className="flex flex-wrap gap-6 justify-center">
-                {highlights.map((item) => (
-                  <motion.div
-                    key={item.label}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                    className="flex items-center gap-2 glass-card px-6 py-3 rounded-xl bg-white/40 backdrop-blur-sm border border-white/50 shadow-sm"
-                  >
-                    <item.icon className="w-5 h-5 text-primary" />
-                    <span className="font-medium">{item.label}</span>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Stats Section */}
-        <section className="py-16 -mt-12">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-              {stats.map((stat) => (
-                <MetricBadge
-                  key={stat.label}
-                  label={stat.label}
-                  value={stat.value}
-                  color={stat.color}
-                  className="w-full"
-                />
+            <div className="flex flex-wrap gap-4 justify-center">
+              {highlights.map((item) => (
+                <div
+                  key={item.label}
+                  className="flex items-center gap-2 bg-white border border-green-200 px-5 py-2.5 rounded text-sm"
+                >
+                  <item.icon className="w-4 h-4 text-green-600" />
+                  <span className="font-medium text-gray-700">{item.label}</span>
+                </div>
               ))}
             </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-12 bg-green-50 border-b border-green-100">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+            {stats.map((stat) => (
+              <MetricBadge
+                key={stat.label}
+                label={stat.label}
+                value={stat.value}
+                color={stat.color}
+                className="w-full"
+              />
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Architecture Overview */}
-        <section className="py-20">
-          <div className="container mx-auto px-4">
-            <SectionHeading subtitle="From data to deployment">
-              Research Pipeline
-            </SectionHeading>
+      {/* Architecture Overview */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <SectionHeading subtitle="From data to deployment">
+            Research Pipeline
+          </SectionHeading>
 
-            <div className="grid md:grid-cols-4 gap-6 max-w-5xl mx-auto">
-              {pipeline.map((item, idx) => (
-                <GlassCard key={item.label} className="text-center bg-white/50 backdrop-blur-md border-white/60">
-                  <div className="flex flex-col items-center">
-                    <div className="w-16 h-16 rounded-full bg-gradient-primary flex items-center justify-center mb-4 shadow-green">
-                      <item.icon className="w-8 h-8 text-white" />
-                    </div>
-                    <h3 className="font-bold text-lg mb-2">{item.label}</h3>
-                    <p className="text-sm text-muted-foreground">{item.desc}</p>
+          <div className="grid md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+            {pipeline.map((item) => (
+              <GlassCard key={item.label} className="text-center">
+                <div className="flex flex-col items-center">
+                  <div className="w-12 h-12 rounded bg-green-600 flex items-center justify-center mb-4">
+                    <item.icon className="w-6 h-6 text-white" />
                   </div>
-                  {idx < pipeline.length - 1 && (
-                    <div className="hidden md:block absolute top-1/2 -right-3 w-6 h-0.5 bg-gradient-to-r from-green-500 to-green-400" />
-                  )}
-                </GlassCard>
-              ))}
-            </div>
+                  <h3 className="font-semibold text-base text-gray-800 mb-1">{item.label}</h3>
+                  <p className="text-sm text-gray-500">{item.desc}</p>
+                </div>
+              </GlassCard>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* CTA Section */}
-        <section className="py-20">
-          <div className="container mx-auto px-4 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-4xl font-bold text-gradient mb-6">
-                Ready to Explore?
-              </h2>
-              <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Dive into our comprehensive dataset, test our models, or explore the research documentation
-              </p>
-              <div className="flex flex-wrap gap-4 justify-center">
-                <GradientButton href="/dataset">Explore Dataset</GradientButton>
-                <OutlineButton href="/docs">Read Documentation</OutlineButton>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-      </div>
+      {/* CTA Section */}
+      <section className="py-16 border-t border-green-100 bg-green-50">
+        <div className="container mx-auto px-4 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl font-bold text-green-900 mb-4">
+              Ready to Explore?
+            </h2>
+            <p className="text-gray-500 mb-8 max-w-2xl mx-auto">
+              Dive into our comprehensive dataset, test our models, or explore the research documentation.
+            </p>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <GradientButton href="/dataset">Explore Dataset</GradientButton>
+              <OutlineButton href="/docs">Read Documentation</OutlineButton>
+            </div>
+          </motion.div>
+        </div>
+      </section>
     </PageLayout>
   );
 };

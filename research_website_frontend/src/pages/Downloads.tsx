@@ -3,7 +3,8 @@ import { PageLayout } from "@/components/PageLayout";
 import { SectionHeading } from "@/components/SectionHeading";
 import { GlassCard } from "@/components/GlassCard";
 import { GradientButton } from "@/components/GradientButton";
-import { Download, Database, FileCode, BookOpen, FileText, Shield, Sparkles } from "lucide-react";
+import { OutlineButton } from "@/components/OutlineButton";
+import { Download, Database, FileCode, BookOpen, FileText, Shield, CheckCircle } from "lucide-react";
 
 const Downloads = () => {
   const handleDownload = (path: string, filename: string) => {
@@ -55,84 +56,73 @@ const Downloads = () => {
 
   return (
     <PageLayout>
-      {/* Aesthetic Background Orbs */}
-      <div className="fixed inset-0 w-full h-full bg-white -z-10 overflow-hidden">
-        <div className="absolute top-[-10%] left-[-10%] w-[700px] h-[700px] rounded-full bg-green-200/70 blur-[150px]" />
-        <div className="absolute top-[35%] right-[-10%] w-[600px] h-[600px] rounded-full bg-emerald-200/60 blur-[140px]" />
-        <div className="absolute bottom-[-15%] left-[15%] w-[750px] h-[750px] rounded-full bg-teal-200/50 blur-[160px]" />
-      </div>
-
-      <div className="relative z-10">
+      <div>
         {/* Hero */}
-        <section className="py-20 md:py-28">
+        <section className="py-16 md:py-20 border-b border-green-100">
           <div className="container mx-auto px-4 text-center">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.6 }}
             >
-              <SectionHeading subtitle="Everything you need to reproduce, extend, and deploy our research">
-                Downloads Center
+              <SectionHeading subtitle="Everything required to reproduce, extend, and deploy this research">
+                Downloads Centre
               </SectionHeading>
 
-              <p className="mt-8 text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+              <p className="mt-6 text-gray-500 max-w-4xl mx-auto text-sm leading-relaxed">
                 All datasets, trained models, source code, notebooks, and documentation are freely available under the{" "}
-                <span className="font-bold text-gradient">MIT License</span> — use them for research, industry, or teaching.
+                <strong className="text-green-700">MIT License</strong> — for research, industry, or teaching.
               </p>
             </motion.div>
           </div>
         </section>
 
         {/* Download Grid */}
-        <section className="py-20">
+        <section className="py-16">
           <div className="container mx-auto px-4 max-w-7xl">
-            <div className="space-y-20">
+            <div className="space-y-16">
               {downloadSections.map((section, secIdx) => (
                 <motion.div
                   key={section.title}
-                  initial={{ opacity: 0, y: 40 }}
+                  initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: secIdx * 0.15 }}
+                  transition={{ duration: 0.5, delay: secIdx * 0.1 }}
                 >
-                  <div className="flex items-center gap-4 mb-10">
-                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg">
-                      <section.icon className="w-8 h-8 text-white" />
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-10 h-10 rounded bg-green-600 flex items-center justify-center">
+                      <section.icon className="w-5 h-5 text-white" />
                     </div>
-                    <h2 className="text-3xl font-bold text-gradient">{section.title}</h2>
+                    <h2 className="text-xl font-bold text-green-900">{section.title}</h2>
                   </div>
 
-                  <div className="grid md:grid-cols-2 gap-6">
+                  <div className="grid md:grid-cols-2 gap-4">
                     {section.items.map((item, idx) => (
                       <motion.div
                         key={item.name}
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ delay: idx * 0.1 }}
+                        transition={{ delay: idx * 0.08 }}
                       >
-                        <GlassCard className="group p-6 hover:shadow-2xl hover:shadow-green/20 transition-all duration-500 h-full flex items-center justify-between">
-                          <div className="flex-1 pr-6">
-                            <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-gradient transition">
-                              {item.name}
-                            </h3>
-                            <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                              <span className="px-3 py-1 bg-primary/10 text-primary rounded-full font-medium">
+                        <GlassCard className="flex items-center justify-between p-4">
+                          <div className="flex-1 pr-4">
+                            <h3 className="text-sm font-semibold text-gray-800 mb-1">{item.name}</h3>
+                            <div className="flex items-center gap-3 text-xs text-gray-400">
+                              <span className="px-2 py-0.5 bg-green-100 text-green-700 rounded font-medium">
                                 {item.path.split(".").pop()?.toUpperCase()}
                               </span>
-                              <span className="font-medium">{item.size}</span>
+                              <span>{item.size}</span>
                             </div>
                           </div>
 
-                          <motion.button
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.95 }}
+                          <button
                             onClick={() => handleDownload(item.path, item.file)}
-                            className="p-4 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 text-white shadow-lg hover:shadow-green transition-all"
+                            className="p-2.5 border border-green-300 text-green-700 bg-white hover:bg-green-600 hover:text-white hover:border-green-600 transition-colors hover-round-btn"
                             title={`Download ${item.name}`}
                           >
-                            <Download className="w-7 h-7" />
-                          </motion.button>
+                            <Download className="w-5 h-5" />
+                          </button>
                         </GlassCard>
                       </motion.div>
                     ))}
@@ -143,32 +133,34 @@ const Downloads = () => {
           </div>
         </section>
 
-        {/* License & Trust */}
-        <section className="py-20">
+        {/* License */}
+        <section className="py-16 border-t border-green-100 bg-green-50">
           <div className="container mx-auto px-4 max-w-5xl">
-            <GlassCard className="border-2 border-green-500/30 bg-gradient-to-br from-green-50/50 to-emerald-50/30 backdrop-blur">
-              <div className="text-center p-10">
-                <Shield className="w-16 h-16 mx-auto text-green-600 mb-6" />
-                <h3 className="text-3xl font-bold text-gradient mb-4">Open & Permissive License</h3>
-                <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-                  Everything on this page is released under the <strong>MIT License</strong> — one of the most permissive open-source licenses.
+            <GlassCard className="border-l-4 border-l-green-600">
+              <div className="text-center p-8">
+                <Shield className="w-12 h-12 mx-auto text-green-700 mb-4" />
+                <h3 className="text-2xl font-bold text-green-900 mb-3">Open & Permissive License</h3>
+                <p className="text-gray-500 text-sm mb-8 max-w-3xl mx-auto">
+                  All resources on this page are released under the <strong>MIT License</strong> — one of the most permissive open-source licenses available.
                 </p>
 
                 <div className="flex flex-wrap justify-center gap-4">
-                  <span className="px-6 py-3 bg-green-100 text-green-700 rounded-full text-lg font-bold flex items-center gap-2">
-                    <Sparkles className="w-5 h-5" />
+                  <span className="flex items-center gap-2 px-4 py-2 bg-green-100 text-green-800 rounded text-sm font-medium">
+                    <CheckCircle className="w-4 h-4" />
                     Free for Commercial Use
                   </span>
-                  <span className="px-6 py-3 bg-emerald-100 text-emerald-700 rounded-full text-lg font-bold">
+                  <span className="flex items-center gap-2 px-4 py-2 bg-green-100 text-green-800 rounded text-sm font-medium">
+                    <CheckCircle className="w-4 h-4" />
                     No Attribution Required
                   </span>
-                  <span className="px-6 py-3 bg-teal-100 text-teal-700 rounded-full text-lg font-bold">
+                  <span className="flex items-center gap-2 px-4 py-2 bg-green-100 text-green-800 rounded text-sm font-medium">
+                    <CheckCircle className="w-4 h-4" />
                     Modify & Redistribute
                   </span>
                 </div>
 
-                <p className="mt-8 text-sm text-muted-foreground">
-                  See <code className="bg-white/50 px-2 py-1 rounded">LICENSE</code> file in each download for full terms.
+                <p className="mt-6 text-xs text-gray-400">
+                  See <code className="bg-white px-1.5 py-0.5 rounded border border-green-200">LICENSE</code> file in each download for full terms.
                 </p>
               </div>
             </GlassCard>
@@ -176,24 +168,20 @@ const Downloads = () => {
         </section>
 
         {/* Final CTA */}
-        <section className="py-20">
+        <section className="py-16 border-t border-green-100">
           <div className="container mx-auto px-4 text-center">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="max-w-3xl mx-auto"
             >
-              <h2 className="text-4xl md:text-5xl font-bold text-gradient mb-6">
-                Start Building Tomorrow’s Nesting Systems Today
+              <h2 className="text-3xl font-bold text-green-900 mb-4">
+                Begin Building with the Research Assets
               </h2>
-              <div className="flex flex-wrap gap-6 justify-center mt-10">
-                <GradientButton href="/demo" className="text-lg px-10 py-5">
-                  Try Live Demo
-                </GradientButton>
-                <GradientButton href="/docs" className="text-lg px-10 py-5">
-                  Read Research Paper
-                </GradientButton>
+              <div className="flex flex-wrap gap-4 justify-center mt-8">
+                <GradientButton href="/demo">Try Live Demo</GradientButton>
+                <OutlineButton href="/docs">Read Research Documentation</OutlineButton>
               </div>
             </motion.div>
           </div>
