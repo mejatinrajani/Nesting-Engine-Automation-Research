@@ -50,7 +50,7 @@ export const Footer = () => {
         </div>
 
         <div className="border-t border-green-100 mt-8 pt-6 text-center text-xs text-gray-400">
-          <p>&copy; 2024 ML Research Project. Open Source under MIT License.</p>
+          <p>&copy; 2026 ML Research Project. Open Source under MIT License.</p>
         </div>
       </div>
     </footer>
